@@ -1,0 +1,128 @@
+<html>
+<meta charset="utf-8">
+<head>
+
+    <!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <title>Chat</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+
+ .img-responsive {
+  display: block;
+
+  height: auto;
+}
+
+div {
+  text-align: center;
+}
+
+.system {
+
+ opacity: 0;
+}
+
+
+.colorful {
+  background:
+    -webkit-linear-gradient(115deg, hsla(15.85, 100%, 52.23%, 1) 5%, hsla(15.85, 100%, 52.23%, 0) 39%),
+    -webkit-linear-gradient(65deg, hsla(271.7, 100%, 65.98%, 1) 16%, hsla(271.7, 100%, 65.98%, 0) 46%),
+    -webkit-linear-gradient(331deg, hsla(176.6, 91.47%, 48.59%, 1) 31%, hsla(176.6, 91.47%, 48.59%, 0) 48%),
+    -webkit-linear-gradient(279deg, hsla(133.58, 93.48%, 55%, 1) 33%, hsla(133.58, 93.48%, 55%, 0) 47%),
+    -webkit-linear-gradient(287deg, hsla(54.34, 80.94%, 50.74%, 1) 55%, hsla(54.34, 80.94%, 50.74%, 0) 80%);
+  background:
+    linear-gradient(335deg, hsla(15.85, 100%, 52.23%, 1) 5%, hsla(15.85, 100%, 52.23%, 0) 39%),
+    linear-gradient(25deg, hsla(271.7, 100%, 65.98%, 1) 16%, hsla(271.7, 100%, 65.98%, 0) 46%),
+    linear-gradient(119deg, hsla(176.6, 91.47%, 48.59%, 1) 31%, hsla(176.6, 91.47%, 48.59%, 0) 48%),
+    linear-gradient(171deg, hsla(133.58, 93.48%, 55%, 1) 33%, hsla(133.58, 93.48%, 55%, 0) 47%),
+    linear-gradient(163deg, hsla(54.34, 80.94%, 50.74%, 1) 55%, hsla(54.34, 80.94%, 50.74%, 0) 80%);
+  }
+  </style>
+</head>
+<body >
+<script src="jscolor.js"></script>
+
+
+<div style="font-size: 12pt; height: 62px;">Только смысл, никаких личностей. <p><small>Для входа нажмите "Войти". Перед этим, при желании, можно  выбрать цвет вашего текста. </small></p></div>
+
+</div>
+  <div class="container">
+<div style="text-align: left;  " >
+
+    <input  style=" width: 70px;"    data-jscolor="{}" value="8400FF" id="username"  > - цвет текста.</div>
+  <br>
+   <div  >   <button style=" width: 77%;" class="btn btn-outline-secondary  " type="button" onclick="connect();">В О Й Т И</button>
+   
+  </div>
+
+  <div class="system" style="align: center;  width: 70%;" id="system">NOTHING</div>
+  
+
+    <div style="align: center;  width: 100%;" class="input-group mb-3 col-xs-12">
+      <input type="text" id="msg" onkeypress="handleKeyPress(event)" class="form-control col-xs-12" placeholder="..."  aria-describedby="basic-addon2">
+       
+       <div class="input-group-append">
+         <button class="btn btn-outline-primary" type="button" onclick="send();">Отправить</button>
+       </div>
+     </div>
+
+  <table border="1" width="100%" >
+    <tr class="colorful">
+     <td id="td"><div id="log" style="text-align: center; width: 100%; font-size: 16pt; overflow-y: scroll;"  contenteditable="true">...</div></td>
+     
+    </tr>
+   
+  </table>  
+<br>
+<div  style="text-align: left;"><input style=" width: 70px;" data-jscolor="{value:'rgba(255,255,255,0.8)'}", onInput="update(this.jscolor)">- фон чата</div>
+ </div><br>
+<div class="container">
+  <div class="align-center" style="background-color: #7092BE;">
+      <p class="mbr-text mbr-fonts-style  display-7">
+          © ShuRuPin 2021
+      </p>
+  </div>
+</div>
+
+
+
+
+<script>
+// Here we can adjust defaults for all color pickers on page:
+jscolor.presets.default = {
+
+
+    position: 'left',
+    palette: [
+        '#000000', '#7d7d7d', '#870014', '#ec1c23', '#ff7e26',
+        '#fef100', '#22b14b', '#00a1e7', '#3f47cc', '#a349a4',
+        '#ffffff', '#c3c3c3', '#b87957', '#feaec9', '#ffc80d',
+        '#eee3af', '#b5e61d', '#99d9ea', '#7092be', '#c8bfe7',
+    ],
+    //paletteCols: 12,
+    //hideOnPaletteClick: true,
+};
+
+
+
+function update(picker) {
+  //  document.getElementById('td').style.background = picker.toBackground();
+    document.getElementById('td').style.background = picker.toRGBAString();
+}
+
+jscolor.trigger('input'); // triggers 'onInput' on all color pickers when they are ready
+
+</script>
+
+
+
+<script src="websocket.js">
+
+</script>
+</body>
+</html>
